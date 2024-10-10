@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'minecraftia';
+    src: url('./media/minecraftia.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+         url('./media/minecraftia.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+} 
+html {
+    background-color: black;
+}
+* {
+    cursor: url(./media/cursor.png) 16 16, auto !important;
+    font-family: 'Minecraftia', sans-serif !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+	margin: 0%;
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+}
+p {
+    margin-bottom: 2rem;
+    font-size: 20px;
+    text-shadow:1px 1px 10px #fff, 1px 1px 10px #ccc;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+.icon {
+    margin: 0rem;
+    font-size: 100px;
+    text-shadow:1px 1px 10px #fff, 1px 1px 10px #ccc;
+    text-align: center;
+    color: rgba(255, 255, 255, .8);
+}
+button {
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, .5);
+    background-color: rgba(0, 0, 0, .25);
+    transition: transform .2s;
+    color: white;
+    display: block;
+    width: 20rem;
+    height: 3.3rem;
+    margin: 1rem;
+    border: .5px solid rgba(255, 255, 255, .0125);
+    border-radius: 15px;
+}
+button:hover {
+    transform: scale(1.1);
+}
+video {
+    object-fit: contain;
+    overflow: clip;
+}
+.background {
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+}
+.grid {
+    background: transparent url(./media/dot.png) repeat 0 0;
+	height: 100%;
+    opacity: 1;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+}
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
