@@ -3,8 +3,13 @@ document.addEventListener('click', musicPlay);
 document.getElementById('overlay').addEventListener('click', function() {
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
-});
 
+    Array.from(document.getElementsByClassName("text")).forEach(element => {
+        typeWriterEffect(element, "now playing");
+        setTimeout(() => typeWriterEffect(element, "brent faiyaz - wya"), 2500);
+        setTimeout(() => typeWriterEffect(element, "@devoooo"), 8000);
+    });
+});
 function start() {
     let backgroundElements = document.getElementsByClassName("background");
     if (backgroundElements.length > 0 && typeof backgroundElements[0].play === 'function') {
@@ -14,61 +19,32 @@ function start() {
     }
     document.removeEventListener('DOMContentLoaded', start);
 }
-
 function musicPlay() {
     var audio = document.getElementById("music");
-    audio.volume = 0.1;
+    audio.volume = 0.05;
     audio.play();
     document.removeEventListener('click', musicPlay);
     start();
 }
-const typewriterTextElements = document.getElementsByClassName("myname");
-const typeWriterEffect = (text, delayBetween = 100) => {
-    const typeSpeed = 100;
-    const eraseSpeed = 50;
-    // Apply the effect to each element with the "myname" class
-    Array.from(typewriterTextElements).forEach(typewriterText => {
-        let currentIndex = 0;
-        // Typing animation
-        function type() {
-                if (currentIndex < text.length) {
-                    typewriterText.textContent += text.charAt(currentIndex);
-                    currentIndex++;
-                    setTimeout(type, typeSpeed);
-                } else {
-                    setTimeout(erase, delayBetween); // Wait, then erase
-                }
-            }
-            // Erasing animation
-        function erase() {
-                if (currentIndex > 0) {
-                    typewriterText.textContent = text.substring(0, currentIndex - 1);
-                    currentIndex--;
-                    setTimeout(erase, eraseSpeed);
-                } else {
-                    setTimeout(() => typeOriginalText("@devoooo"), delayBetween);
-                }
-            }
-            // Type the final text
-        function typeOriginalText(finalText) {
-            typewriterText.textContent = ""; // Clear any existing text
-            let currentIndex = 0;
-
-            function typeFinal() {
-                if (currentIndex < finalText.length) {
-                    typewriterText.textContent += finalText.charAt(currentIndex);
-                    currentIndex++;
-                    setTimeout(typeFinal, 100); // Type speed for final text
-                }
-            }
-            typeFinal(); // Start typing final text
+const typeWriterEffect = (element, text, typeSpeed = 100, eraseSpeed = 50) => {
+    let currentIndex = 0;
+    function eraseExistingText(callback) {
+        if (element.textContent.length > 0) {
+            element.textContent = element.textContent.slice(0, -1);
+            setTimeout(() => eraseExistingText(callback), eraseSpeed);
+        } else {
+            callback(); 
         }
-        type(); // Start typing "Now playing"
-    });
+    }
+    function type() {
+        if (currentIndex < text.length) {
+            element.textContent += text.charAt(currentIndex);
+            currentIndex++;
+            setTimeout(type, typeSpeed);
+        }
+    }
+    eraseExistingText(type);
 };
-// Start with "Now playing" effect
-typeWriterEffect("brent faiyaz - wya", 1000);
-// typeWriterEffect("brent faiyaz - wya", 2000);
 let e = ["rgba(255, 255, 255, 0.8)"],
     n = document.body,
     i = n || document.body,
@@ -124,14 +100,12 @@ if (A.matches) {
     window.addEventListener("resize", g);
     v();
 }
-
 function g() {
     o = window.innerWidth;
     s = window.innerHeight;
     r.width = o;
     r.height = s;
 }
-
 function f(t) {
     if (t.touches.length > 0) {
         for (let e = 0; e < t.touches.length; e++) {
@@ -139,7 +113,6 @@ function f(t) {
         }
     }
 }
-
 function p(t) {
     window.requestAnimationFrame(() => {
         if (n) {
@@ -153,13 +126,11 @@ function p(t) {
         y(h.x, h.y, a[Math.floor(Math.random() * e.length)]);
     });
 }
-
 function y(t, e, n) {
     const offsetX = 10;
     const offsetY = 10;
     l.push(new x(t + offsetX, e + offsetY, n));
 }
-
 function v() {
     ! function() {
         if (0 != l.length) {
@@ -173,7 +144,6 @@ function v() {
     }();
     u = requestAnimationFrame(v);
 }
-
 function x(t, e, n) {
     const i = Math.floor(30 * Math.random() + 60);
     this.initialLifeSpan = i;
