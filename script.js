@@ -6,7 +6,7 @@ document.getElementById('overlay').addEventListener('click', function() {
 
     Array.from(document.getElementsByClassName("text")).forEach(element => {
         typeWriterEffect(element, "now playing");
-        setTimeout(() => typeWriterEffect(element, "bryson tiller - don't"), 2500);
+        setTimeout(() => typeWriterEffect(element, "playboi carti - location"), 2500);
         setTimeout(() => typeWriterEffect(element, "@devoooo"), 8000);
     });
 });
