@@ -4,12 +4,12 @@ document.getElementById('overlay').addEventListener('click', function() {
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
 
-    Array.from(document.getElementsByClassName("text")).forEach(element => {
+    /*Array.from(document.getElementsByClassName("text")).forEach(element => {
         typeWriterEffect(element, "now playing");
         setTimeout(() => typeWriterEffect(element, "clara la san - unplanned"), 2500);
         setTimeout(() => typeWriterEffect(element, "@devoooo"), 8000);
-    });
-});
+    });*/
+}); 
 function start() {
     let backgroundElements = document.getElementsByClassName("background");
     if (backgroundElements.length > 0 && typeof backgroundElements[0].play === 'function') {
